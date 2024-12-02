@@ -1,0 +1,19 @@
+<changelist name="Uncommitted_changes_before_rebase_[Changes]" date="1733110740370" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before rebase [Changes]" />
+  <binary>
+    <option name="AFTER_PATH" value="src/app/favicon.ico" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]/favicon.ico" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="src/app/fonts/GeistVF.woff" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]/GeistVF.woff" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="src/app/fonts/GeistMonoVF.woff" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]/GeistMonoVF.woff" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="LICENSE" />
+  </binary>
+</changelist>
