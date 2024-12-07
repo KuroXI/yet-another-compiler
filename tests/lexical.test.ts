@@ -1,4 +1,4 @@
-import { type ILexical, Lexical } from "@/lexical/Lexical";
+import { type ILexical, Lexical } from "@/lexical/lexical";
 
 describe("Lexical Analysis Test", () => {
 	let lexical: ILexical;
