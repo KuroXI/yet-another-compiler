@@ -6,13 +6,13 @@ export const patterns = {
 	 */
 	IDENTIFIER: /^[a-zA-Z_][a-zA-Z0-9_]*$/,
 	/**
-	 * ^[0-9]+$         - Int Value
+	 * ^-?[0-9]+$       - Int Value (Positive and Negative)
 	 * ^".*"$           - String value
 	 * ^(true|false)$   - Boolean value
 	 * ^'[^']'$         - Char value
-	 * ^\d+\.\d+$       - Double value
+	 * ^-?\d+\.\d+$     - Double value (Positive and Negative)
 	 */
-	VALUE: /^[0-9]+$|^".*"$|^(true|false)$|^'[^']'$|^\d+\.\d+$/,
+	VALUE: /^-?[0-9]+$|^".*"$|^(true|false)$|^'[^']'$|^-?\d+\.\d+$/,
 	OPERATOR: /^=$/,
 	SEMICOLON: /^;$/,
 };

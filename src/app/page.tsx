@@ -36,8 +36,8 @@ export default function Home() {
 
 		const reader = new FileReader();
 		reader.onload = () => {
-			setCode(reader.result as string);
-			setOutput('File loaded successfully.');
+			setCode(String.raw`${reader.result}`);
+			setOutput("File loaded successfully.");
 			setDisabledButtons({
 				...disabledButtons,
 				openFile: true,
@@ -120,7 +120,7 @@ export default function Home() {
 						className="hidden"
 					/>
 					<Button
-						label="Open FIle"
+						label="Open File"
 						onClick={handleCustomButtonClick}
 						disabled={disabledButtons.openFile}
 					/>

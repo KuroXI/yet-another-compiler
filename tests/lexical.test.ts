@@ -156,6 +156,32 @@ describe("Lexical Analysis Test", () => {
 		]);
 	});
 
+	test("Tokenize input with negative integer values", () => {
+		const input = String.raw`int negativeNumber = -1;`;
+
+		const tokens = lexical.tokenize(input);
+		expect(tokens).toStrictEqual([
+			{ type: "KEYWORD", value: "int" },
+			{ type: "IDENTIFIER", value: "negativeNumber" },
+			{ type: "OPERATOR", value: "=" },
+			{ type: "VALUE", value: "-1" },
+			{ type: "SEMICOLON", value: ";" },
+		]);
+	});
+
+	test("Tokenize input with negative double values", () => {
+		const input = String.raw`double negativeDouble = -1.10;`;
+
+		const tokens = lexical.tokenize(input);
+		expect(tokens).toStrictEqual([
+			{ type: "KEYWORD", value: "double" },
+			{ type: "IDENTIFIER", value: "negativeDouble" },
+			{ type: "OPERATOR", value: "=" },
+			{ type: "VALUE", value: "-1.10" },
+			{ type: "SEMICOLON", value: ";" },
+		]);
+	});
+
 	test("Tokenize string with special characters", () => {
 		const input = String.raw`String greeting = "Hello, \"World!\"";`;
 
