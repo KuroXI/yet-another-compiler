@@ -85,13 +85,13 @@ export default function Home() {
 			semanticAnalysis.analyze(code);
 
 			setOutput("Semantic Analysis Passed!");
-			setDisabledButtons({
-				...disabledButtons,
-				semanticAnalysis: true,
-			});
 		} catch (error) {
 			setOutput((error as Error).message);
 		}
+		setDisabledButtons({
+			...disabledButtons,
+			semanticAnalysis: true,
+		});
 	};
 
 	const clear = () => {

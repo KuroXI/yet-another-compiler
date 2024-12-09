@@ -3,15 +3,18 @@ import type { IToken } from "@/lexical/types";
 import type { VariableDeclaration } from "@/syntax/types";
 
 export class Syntax {
-  private validTypes = ["int", "boolean", "char", "double", "String"];
+  private _lexicalAnalysis: Lexical;
+  private _validTypes = ["int", "boolean", "char", "double", "String"];
   
-  public analyze(input: string): VariableDeclaration[] {
-    const lexicalAnalysis = new Lexical();
-    
-    return this._buildVariableDeclarations(lexicalAnalysis.tokenize(input));
+  constructor(lexicalAnalysis: Lexical = new Lexical()) {
+    this._lexicalAnalysis = lexicalAnalysis;
   }
   
-  private _buildVariableDeclarations(tokens: IToken[]): VariableDeclaration[] {
+  public analyze(input: string): VariableDeclaration[] {
+    return this._parse(this._lexicalAnalysis.tokenize(input));
+  }
+  
+  private _parse(tokens: IToken[]): VariableDeclaration[] {
     const declarations: VariableDeclaration[] = [];
     let i = 0;
     
@@ -39,7 +42,7 @@ export class Syntax {
   }
   
   private _validateType(token: IToken | undefined, position: number): string {
-    if (!token || token.type !== "KEYWORD" || !this.validTypes.includes(token.value)) {
+    if (!token || token.type !== "KEYWORD" || !this._validTypes.includes(token.value)) {
       throw new Error(`Syntax Error: Expected a type keyword at position ${position}.`);
     }
     

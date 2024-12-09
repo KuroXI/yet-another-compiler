@@ -3,18 +3,29 @@ import { Syntax } from "@/syntax/syntax";
 import type { VariableDeclaration } from "@/syntax/types";
 
 export class Semantic {
+  private _syntaxAnalysis: Syntax;
+  
+  constructor(syntaxAnalysis: Syntax = new Syntax()) {
+    this._syntaxAnalysis = syntaxAnalysis;
+  }
+  
   public analyze(input: string) {
-    const syntaxAnalysis = new Syntax();
-    
-    this._validateVariableDeclarations(syntaxAnalysis.analyze(input));
+    this._validateVariableDeclarations(this._syntaxAnalysis.analyze(input));
   }
   
   private _validateVariableDeclarations(declarations: VariableDeclaration[]): void {
-    for (const declaration of declarations) {
-      const { type, value } = declaration;
+    const existingNames: Set<string> = new Set();
+    
+    for (const declaration of declarations) {0
+      const { type, value, name } = declaration;
+      
+      if (existingNames.has(name)) {
+        throw new Error(`Semantic Error: Variable "${name}" already exists.`);
+      }
+      existingNames.add(name);
       
       if (!this._isValueCompatibleWithType(type, value)) {
-        throw new Error(`Incompatible value '${value}' for type '${type}'.`);
+        throw new Error(`Semantic Error: Incompatible value '${value}' is not assignable to type '${type}'.`);
       }
     }
   }

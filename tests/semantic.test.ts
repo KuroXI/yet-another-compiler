@@ -13,13 +13,23 @@ describe("Semantic Analysis", () => {
     expect(() => semantic.analyze(input)).not.toThrow();
   });
   
+  it("should throw an error when variable name is already existed", () => {
+    const input = "char letter = 'b'; char letter = 'c';";
+    
+    try {
+      semantic.analyze(input);
+    } catch (error) {
+      expect((error as Error).message).toBe('Semantic Error: Variable "letter" already exists.');
+    }
+  });
+  
   it("should throw an error when given string for type int", () => {
     const input = "int x = \"Hello\";";
     
     try {
       semantic.analyze(input);
     } catch (error) {
-      expect((error as Error).message).toBe("Incompatible value '\"Hello\"' for type 'int'.");
+      expect((error as Error).message).toBe("Semantic Error: Incompatible value '\"Hello\"' for type 'int'.");
     }
   });
   
@@ -29,7 +39,7 @@ describe("Semantic Analysis", () => {
     try {
       semantic.analyze(input);
     } catch (error) {
-      expect((error as Error).message).toBe("Incompatible value '52.10' for type 'int'.");
+      expect((error as Error).message).toBe("Semantic Error: Incompatible value '52.10' for type 'int'.");
     }
   });
   
@@ -39,7 +49,7 @@ describe("Semantic Analysis", () => {
     try {
       semantic.analyze(input);
     } catch (error) {
-      expect((error as Error).message).toBe("Incompatible value '42' for type 'boolean'.");
+      expect((error as Error).message).toBe("Semantic Error: Incompatible value '42' for type 'boolean'.");
     }
   });
   
@@ -49,7 +59,7 @@ describe("Semantic Analysis", () => {
     try {
       semantic.analyze(input);
     } catch (error) {
-      expect((error as Error).message).toBe("Incompatible value '\"true\"' for type 'boolean'.");
+      expect((error as Error).message).toBe("Semantic Error: Incompatible value '\"true\"' for type 'boolean'.");
     }
   });
   
@@ -59,7 +69,7 @@ describe("Semantic Analysis", () => {
     try {
       semantic.analyze(input);
     } catch (error) {
-      expect((error as Error).message).toBe("Incompatible value '\'a\'' for type 'boolean'.");
+      expect((error as Error).message).toBe("Semantic Error: Incompatible value '\'a\'' for type 'boolean'.");
     }
   });
   
@@ -69,7 +79,7 @@ describe("Semantic Analysis", () => {
     try {
       semantic.analyze(input);
     } catch (error) {
-      expect((error as Error).message).toBe("Incompatible value '42' for type 'String'.");
+      expect((error as Error).message).toBe("Semantic Error: Incompatible value '42' for type 'String'.");
     }
   });
   
@@ -79,7 +89,7 @@ describe("Semantic Analysis", () => {
     try {
       semantic.analyze(input);
     } catch (error) {
-      expect((error as Error).message).toBe("Incompatible value 'true' for type 'String'.");
+      expect((error as Error).message).toBe("Semantic Error: Incompatible value 'true' for type 'String'.");
     }
   });
   
@@ -89,7 +99,7 @@ describe("Semantic Analysis", () => {
     try {
       semantic.analyze(input);
     } catch (error) {
-      expect((error as Error).message).toBe("Incompatible value '52.10' for type 'String'.");
+      expect((error as Error).message).toBe("Semantic Error: Incompatible value '52.10' for type 'String'.");
     }
   });
   
@@ -99,7 +109,7 @@ describe("Semantic Analysis", () => {
     try {
       semantic.analyze(input);
     } catch (error) {
-      expect((error as Error).message).toBe("Incompatible value '\'H\'' for type 'String'.");
+      expect((error as Error).message).toBe("Semantic Error: Incompatible value '\'H\'' for type 'String'.");
     }
   });
   
@@ -109,7 +119,7 @@ describe("Semantic Analysis", () => {
     try {
       semantic.analyze(input);
     } catch (error) {
-      expect((error as Error).message).toBe("Incompatible value '\"Hello\"' for type 'char'.");
+      expect((error as Error).message).toBe("Semantic Error: Incompatible value '\"Hello\"' for type 'char'.");
     }
   });
   
@@ -119,7 +129,7 @@ describe("Semantic Analysis", () => {
     try {
       semantic.analyze(input);
     } catch (error) {
-      expect((error as Error).message).toBe("Incompatible value 'true' for type 'char'.");
+      expect((error as Error).message).toBe("Semantic Error: Incompatible value 'true' for type 'char'.");
     }
   });
   
@@ -129,7 +139,7 @@ describe("Semantic Analysis", () => {
     try {
       semantic.analyze(input);
     } catch (error) {
-      expect((error as Error).message).toBe("Incompatible value '3.14' for type 'char'.");
+      expect((error as Error).message).toBe("Semantic Error: Incompatible value '3.14' for type 'char'.");
     }
   });
   
@@ -139,7 +149,7 @@ describe("Semantic Analysis", () => {
     try {
       semantic.analyze(input);
     } catch (error) {
-      expect((error as Error).message).toBe("Incompatible value '42' for type 'char'.");
+      expect((error as Error).message).toBe("Semantic Error: Incompatible value '42' for type 'char'.");
     }
   });
 });
